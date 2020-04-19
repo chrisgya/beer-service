@@ -1,0 +1,8 @@
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    preferIpAddress: true

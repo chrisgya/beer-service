@@ -10,7 +10,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -26,12 +25,12 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
 
     private String beerInventoryServiceHost;
 
-    public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
-        this.beerInventoryServiceHost = beerInventoryServiceHost;
-    }
-
     public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
+    }
+
+    public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
+        this.beerInventoryServiceHost = beerInventoryServiceHost;
     }
 
     @Override
@@ -53,4 +52,5 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
 
         return onHand;
     }
+
 }

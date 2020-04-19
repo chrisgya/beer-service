@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class BeerOrderValidationListener {
 
-    private final BeerOrderValidator validator;
+    private final BeerOrderValidator beerOrderValidator;
     private final JmsTemplate jmsTemplate;
 
     @JmsListener(destination = JmsConfig.VALIDATE_ORDER_QUEUE)
     public void listen(ValidateOrderRequest validateOrderRequest){
-        Boolean isValid = validator.validateOrder(validateOrderRequest.getBeerOrder());
+        Boolean isValid = beerOrderValidator.validateOrder(validateOrderRequest.getBeerOrder());
 
         jmsTemplate.convertAndSend(JmsConfig.VALIDATE_ORDER_RESPONSE_QUEUE,
                 ValidateOrderResult.builder()

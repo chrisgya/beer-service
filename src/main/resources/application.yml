@@ -1,17 +1,17 @@
 server:
-  port: 8080
-  servlet:
-    context-path: /beer-service
+  port: ${PORT:0}
+#  servlet:
+#    context-path: /beer-service
 
 spring:
   application:
-    name: BeerService
+    name: beer-service
   cache:
     jcache:
       config: 'classpath:ehcache.xml'
   datasource:
     name: beer-shop-datasource
-    url: 'jdbc:postgresql://localhost:5432/beer_shop'
+    url: 'jdbc:postgresql://localhost:5432/beer_service'
     username: postgres
     password: ENC(j7OC/L6FZI+8d29tRAYsreDkvGb+V/XF)
     hikari:
@@ -80,3 +80,6 @@ logging:
 sfg:
   brewery:
     beer-inventory-service-host: 'http://localhost:8082'
+
+fixedRate:
+  low_inventory: 60000 # 60 seconds in milliseconds
